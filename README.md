@@ -1,9 +1,6 @@
+# Password Generator
 
-# Modern Password Generator
-
-A sleek, modern password generator with customizable options built with React, TypeScript, and Tailwind CSS.
-
-![Password Generator Preview](public/preview.png)
+A sleek, modern password generator with customizable options
 
 ## Features
 
