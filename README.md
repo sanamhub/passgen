@@ -64,7 +64,7 @@ To deploy on Cloudflare Pages:
 
 ```sh
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/sanamhub/password-generator.git
 
 # Navigate to the project directory
 cd password-generator
