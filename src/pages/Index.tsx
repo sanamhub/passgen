@@ -37,9 +37,7 @@ const Index = () => {
 
       <header className="py-4 px-6 bg-card/60 backdrop-blur-sm shadow-sm relative z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold">
-            Password Generator (PwdGen)
-          </h1>
+          <h1 className="text-xl md:text-2xl font-bold">Password Generator</h1>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
