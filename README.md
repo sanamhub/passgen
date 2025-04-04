@@ -2,6 +2,10 @@
 
 A sleek, modern password generator with customizable options
 
+Find at [passgenfly.netlify.app](https://passgenfly.netlify.app/)
+
+![PassGen Thumb](public/passgenthumb.svg)
+
 ## Features
 
 - Generate secure passwords with customizable length
