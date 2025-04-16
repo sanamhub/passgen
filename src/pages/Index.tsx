@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import PasswordDisplay from "@/components/PasswordDisplay";
 import PasswordOptions from "@/components/PasswordOptions";
 import PasswordStrength from "@/components/PasswordStrength";
+import ApiSection from "@/components/ApiSection";
 import { generatePassword } from "@/utils/passwordGenerator";
 import type { PasswordOptions as PasswordOptionsType } from "@/utils/passwordGenerator";
-import { Github } from "lucide-react";
+import { Github, Key, Shield } from "lucide-react";
 import BackgroundElements from "@/components/BackgroundElements";
 import { useTheme } from "@/hooks/useTheme";
 
@@ -37,7 +38,17 @@ const Index = () => {
 
       <header className="py-4 px-6 bg-card/60 backdrop-blur-sm shadow-sm relative z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold">Password Generator</h1>
+          <div className="flex items-center">
+            <Key className="h-6 w-6 mr-2 text-primary" />
+            <h1 className="flex items-center text-xl md:text-2xl font-bold">
+            <span className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                PassGenFly
+              </span>
+              <span className="hidden sm:block ml-2 text-muted-foreground text-sm font-normal border-l border-border pl-2">
+                Secure Password Generator
+              </span>
+            </h1>
+          </div>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -103,6 +114,8 @@ const Index = () => {
           />
 
           <PasswordStrength password={password} options={passwordOptions} />
+          
+          <ApiSection />
         </div>
       </main>
     </div>

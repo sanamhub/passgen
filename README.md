@@ -1,8 +1,8 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d7e4210e-05a7-4f98-adba-154a9ef643c1/deploy-status)](https://app.netlify.com/sites/passgenfly/deploys)
 
-# Password Generator
+# PassGenFly - Password Generator
 
-A sleek, modern password generator with customizable options
+A sleek, modern password generator with customizable options and public API
 
 Find at [passgenfly.netlify.app](https://passgenfly.netlify.app)
 
@@ -18,6 +18,88 @@ Find at [passgenfly.netlify.app](https://passgenfly.netlify.app)
 - Password strength indicator
 - Responsive design for all devices
 - One-click password regeneration
+- **NEW**: Public API for password generation
+
+## API Usage
+
+PassGenFly provides a public API that can be used to generate passwords programmatically:
+
+```
+GET https://passgenfly.netlify.app/api/generate
+```
+
+### Query Parameters
+
+- `length`: Password length (number, default: 12)
+- `characterMode`: Character set mode ("all", "easyToSay", or "easyToRead", default: "all")
+- When `characterMode="all"`, you can also use:
+  - `uppercase`: Include uppercase letters (boolean, default: true)
+  - `lowercase`: Include lowercase letters (boolean, default: true)
+  - `numbers`: Include numbers (boolean, default: true)
+  - `symbols`: Include symbols (boolean, default: true)
+
+### Examples
+
+Default password (12 characters):
+```
+https://passgenfly.netlify.app/api/generate
+```
+
+Custom 16-character password with all character types:
+```
+https://passgenfly.netlify.app/api/generate?length=16
+```
+
+Easy-to-say password:
+```
+https://passgenfly.netlify.app/api/generate?characterMode=easyToSay
+```
+
+Password with only lowercase and numbers:
+```
+https://passgenfly.netlify.app/api/generate?uppercase=false&symbols=false
+```
+
+### Response Format
+
+```json
+{
+  "password": "X4$9aB!pR2@kL7",
+  "strength": {
+    "score": 85,
+    "label": "Strong"
+  },
+  "options": {
+    "length": 16,
+    "uppercase": true,
+    "lowercase": true,
+    "numbers": true,
+    "symbols": true,
+    "easyToSay": false,
+    "easyToRead": false
+  }
+}
+```
+
+### Alternative Endpoint
+
+The API is also accessible through the Netlify Functions path:
+
+```
+https://passgenfly.netlify.app/.netlify/functions/api/generate
+```
+
+### Local Development
+
+When developing locally, run both the development server and the API server:
+
+```sh
+# Start the API server
+node api-server.js
+
+# In another terminal, start the Vite dev server
+npm run dev
+```
 
 ## Tech Stack
 

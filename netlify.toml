@@ -1,8 +1,14 @@
-
 [build]
   command = "npm run build"
   publish = "dist"
 
+# Rewrite for the API endpoint
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+# Fallback for SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
