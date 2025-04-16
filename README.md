@@ -1,12 +1,10 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d7e4210e-05a7-4f98-adba-154a9ef643c1/deploy-status)](https://app.netlify.com/sites/passgenfly/deploys)
 
-# PassGenFly - Password Generator
+# PassGenFly - Secure Password Generator
 
 A sleek, modern password generator with customizable options and public API
 
 Live site: [passgenfly.netlify.app](https://passgenfly.netlify.app)
-
-![PassGen Thumb](public/passgenthumb.svg)
 
 ## Features
 
