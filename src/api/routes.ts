@@ -1,7 +1,9 @@
 import { handleGeneratePasswordRequest } from "./generatePassword";
 
 // Handler for all API routes
-export const handleApiRequest = (req: Request): Response | Promise<Response> => {
+export const handleApiRequest = (
+  req: Request
+): Response | Promise<Response> => {
   const url = new URL(req.url);
   const path = url.pathname;
 
@@ -18,17 +20,17 @@ export const handleApiRequest = (req: Request): Response | Promise<Response> => 
   }
 
   // Route to appropriate handler based on the path
-  if (path === "/api/generate" || path.startsWith("/.netlify/functions/api/generate")) {
+  if (
+    path === "/api/generate" ||
+    path.startsWith("/.netlify/functions/api/generate")
+  ) {
     console.log("API Request received for /api/generate");
     return handleGeneratePasswordRequest(url);
   }
 
   // Handle 404 for unknown routes
-  return new Response(
-    JSON.stringify({ error: "Not found" }),
-    {
-      status: 404,
-      headers: { "Content-Type": "application/json" },
-    }
-  );
-}; 
+  return new Response(JSON.stringify({ error: "Not found" }), {
+    status: 404,
+    headers: { "Content-Type": "application/json" },
+  });
+};

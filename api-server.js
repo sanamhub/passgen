@@ -1,6 +1,6 @@
 // Simple API server for development
-import express from 'express';
-import cors from 'cors';
+import express from "express";
+import cors from "cors";
 
 const app = express();
 const PORT = 4174;
@@ -12,7 +12,7 @@ const charactersLib = {
   numberChars: "0123456789",
   symbolChars: "!@#$%^&*()_+-=[]{}|;:,.<>?",
   easyToSayChars: "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz",
-  easyToReadChars: "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789"
+  easyToReadChars: "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789",
 };
 
 // Generate a password based on options
@@ -93,14 +93,16 @@ const getStrengthInfo = (strength) => {
 };
 
 // Enable CORS
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'OPTIONS'],
-  allowedHeaders: ['Content-Type']
-}));
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 // Simple HTML for the root route to show server is running
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send(`
     <html>
       <head>
@@ -129,16 +131,16 @@ app.get('/', (req, res) => {
 });
 
 // API endpoint for password generation
-app.get('/api/generate', (req, res) => {
+app.get("/api/generate", (req, res) => {
   try {
-    console.log('API request received:', req.query);
-    
+    console.log("API request received:", req.query);
+
     // Extract query parameters
-    const length = parseInt(req.query.length || '12', 10);
-    
+    const length = parseInt(req.query.length || "12", 10);
+
     // Check for character mode parameter
-    const characterMode = req.query.characterMode || 'all';
-    
+    const characterMode = req.query.characterMode || "all";
+
     // Set defaults based on character mode
     let uppercase = true;
     let lowercase = true;
@@ -146,25 +148,27 @@ app.get('/api/generate', (req, res) => {
     let symbols = true;
     let easyToSay = false;
     let easyToRead = false;
-    
+
     // Apply character mode settings
-    if (characterMode === 'easyToSay') {
+    if (characterMode === "easyToSay") {
       easyToSay = true;
       easyToRead = false;
-    } else if (characterMode === 'easyToRead') {
+    } else if (characterMode === "easyToRead") {
       easyToSay = false;
       easyToRead = true;
     } else {
       // For "all" mode or default, use individual parameters if provided
-      uppercase = req.query.uppercase !== 'false';
-      lowercase = req.query.lowercase !== 'false';
-      numbers = req.query.numbers !== 'false';
-      symbols = req.query.symbols !== 'false';
+      uppercase = req.query.uppercase !== "false";
+      lowercase = req.query.lowercase !== "false";
+      numbers = req.query.numbers !== "false";
+      symbols = req.query.symbols !== "false";
     }
 
     // Validate length
     if (isNaN(length) || length < 1 || length > 100) {
-      return res.status(400).json({ error: 'Invalid length. Must be between 1 and 100.' });
+      return res
+        .status(400)
+        .json({ error: "Invalid length. Must be between 1 and 100." });
     }
 
     // Create password options
@@ -180,15 +184,15 @@ app.get('/api/generate', (req, res) => {
 
     // Generate password
     const password = generatePassword(options);
-    
+
     // Calculate strength
     const strength = calculatePasswordStrength(password, options);
     const strengthInfo = getStrengthInfo(strength);
 
     // Add CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
     // Return password and additional information
     res.json({
@@ -197,23 +201,25 @@ app.get('/api/generate', (req, res) => {
         score: strength,
         label: strengthInfo.label,
       },
-      options
+      options,
     });
   } catch (error) {
-    console.error('API error:', error);
-    res.status(500).json({ error: 'Failed to generate password' });
+    console.error("API error:", error);
+    res.status(500).json({ error: "Failed to generate password" });
   }
 });
 
 // Support for Netlify function path pattern
-app.get('/.netlify/functions/api/generate', (req, res) => {
+app.get("/.netlify/functions/api/generate", (req, res) => {
   // Forward to the main API endpoint
-  req.url = '/api/generate';
+  req.url = "/api/generate";
   app._router.handle(req, res);
 });
 
 // Start the server
 app.listen(PORT, () => {
   console.log(`API server running at http://localhost:${PORT}`);
-  console.log(`Password generation API available at http://localhost:${PORT}/api/generate`);
-}); 
+  console.log(
+    `Password generation API available at http://localhost:${PORT}/api/generate`
+  );
+});

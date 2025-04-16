@@ -1,14 +1,18 @@
-import { generatePassword, calculatePasswordStrength, getStrengthInfo } from "../utils/passwordGenerator";
+import {
+  generatePassword,
+  calculatePasswordStrength,
+  getStrengthInfo,
+} from "../utils/passwordGenerator";
 import type { PasswordOptions } from "../utils/passwordGenerator";
 
 export const handleGeneratePasswordRequest = (url: URL): Response => {
   try {
     // Extract query parameters
     const length = parseInt(url.searchParams.get("length") || "12", 10);
-    
+
     // Check for character mode parameter
     const characterMode = url.searchParams.get("characterMode") || "all";
-    
+
     // Set defaults based on character mode
     let uppercase = true;
     let lowercase = true;
@@ -16,7 +20,7 @@ export const handleGeneratePasswordRequest = (url: URL): Response => {
     let symbols = true;
     let easyToSay = false;
     let easyToRead = false;
-    
+
     // Apply character mode settings
     if (characterMode === "easyToSay") {
       easyToSay = true;
@@ -56,7 +60,7 @@ export const handleGeneratePasswordRequest = (url: URL): Response => {
 
     // Generate password
     const password = generatePassword(options);
-    
+
     // Calculate strength
     const strength = calculatePasswordStrength(password, options);
     const strengthInfo = getStrengthInfo(strength);
@@ -69,7 +73,7 @@ export const handleGeneratePasswordRequest = (url: URL): Response => {
           score: strength,
           label: strengthInfo.label,
         },
-        options
+        options,
       }),
       {
         status: 200,
@@ -88,4 +92,4 @@ export const handleGeneratePasswordRequest = (url: URL): Response => {
       }
     );
   }
-}; 
+};
