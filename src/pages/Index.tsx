@@ -5,7 +5,7 @@ import PasswordStrength from "@/components/PasswordStrength";
 import ApiSection from "@/components/ApiSection";
 import { generatePassword } from "@/utils/passwordGenerator";
 import type { PasswordOptions as PasswordOptionsType } from "@/utils/passwordGenerator";
-import { Github, Key, Shield } from "lucide-react";
+import { Github } from "lucide-react";
 import BackgroundElements from "@/components/BackgroundElements";
 import { useTheme } from "@/hooks/useTheme";
 
@@ -39,7 +39,6 @@ const Index = () => {
       <header className="py-4 px-6 bg-card/60 backdrop-blur-sm shadow-sm relative z-10">
         <div className="max-w-3xl mx-auto flex justify-between items-center">
           <div className="flex items-center">
-            <Key className="h-6 w-6 mr-2 text-primary" />
             <h1 className="flex items-center text-xl md:text-2xl font-bold">
               <span className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 PassGenFly

@@ -115,7 +115,6 @@ const ApiSection: React.FC = () => {
               <ChevronRight className="h-4 w-4 mr-2" />
             )}
             <div className="flex items-center">
-              <Code className="h-4 w-4 mr-2" />
               <span className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 PassGenFly API
               </span>
@@ -123,7 +122,7 @@ const ApiSection: React.FC = () => {
                 variant="default"
                 className="ml-2 bg-green-500 hover:bg-green-600"
               >
-                API
+                New
               </Badge>
             </div>
           </CollapsibleTrigger>
