@@ -4,7 +4,7 @@
 
 A sleek, modern password generator with customizable options and public API
 
-Find at [passgenfly.netlify.app](https://passgenfly.netlify.app)
+Live site: [passgenfly.netlify.app](https://passgenfly.netlify.app)
 
 ![PassGen Thumb](public/passgenthumb.svg)
 
@@ -41,21 +41,25 @@ GET https://passgenfly.netlify.app/api/generate
 ### Examples
 
 Default password (12 characters):
+
 ```
 https://passgenfly.netlify.app/api/generate
 ```
 
 Custom 16-character password with all character types:
+
 ```
 https://passgenfly.netlify.app/api/generate?length=16
 ```
 
 Easy-to-say password:
+
 ```
 https://passgenfly.netlify.app/api/generate?characterMode=easyToSay
 ```
 
 Password with only lowercase and numbers:
+
 ```
 https://passgenfly.netlify.app/api/generate?uppercase=false&symbols=false
 ```
@@ -71,45 +75,38 @@ https://passgenfly.netlify.app/api/generate?uppercase=false&symbols=false
   },
   "options": {
     "length": 16,
+    "characterMode": "all",
     "uppercase": true,
     "lowercase": true,
     "numbers": true,
-    "symbols": true,
-    "easyToSay": false,
-    "easyToRead": false
+    "symbols": true
   }
 }
 ```
 
-### Alternative Endpoint
+For different character modes, the response will reflect the appropriate settings. For example, with `characterMode=easyToSay`:
 
-The API is also accessible through the Netlify Functions path:
-
+```json
+{
+  "password": "bapoludefi",
+  "strength": {
+    "score": 75,
+    "label": "Good"
+  },
+  "options": {
+    "length": 12,
+    "characterMode": "easyToSay",
+    "uppercase": false,
+    "lowercase": true,
+    "numbers": false,
+    "symbols": false
+  }
+}
 ```
-https://passgenfly.netlify.app/.netlify/functions/api/generate
-```
 
-### Local Development
+## Running Locally
 
-When developing locally, run both the development server and the API server:
-
-```sh
-# Start the API server
-node api-server.js
-
-# In another terminal, start the Vite dev server
-npm run dev
-```
-
-## Tech Stack
-
-- React
-- TypeScript
-- Tailwind CSS
-- Vite
-- shadcn/ui components
-
-## Development
+To run the application locally:
 
 ```sh
 # Clone the repository
@@ -124,9 +121,22 @@ npm install
 # Start the development server
 npm run dev
 
-# Build for production
-npm run build
+# Start the API server
+npm run api
 ```
+
+The application will be available at <http://localhost:4176> (or another port if 4176 is in use).
+The API will be available at <http://localhost:4174/api/generate>.
+
+## Tech Stack
+
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+- shadcn/ui components
+- Express.js (API server)
+- Netlify Functions (for production API)
 
 ## Contributing
 

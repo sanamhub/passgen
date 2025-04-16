@@ -115,7 +115,7 @@ const ApiSection: React.FC = () => {
               <span className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 PassGenFly API
               </span>
-              <Badge variant="default" className="ml-2 bg-green-500 hover:bg-green-600">New</Badge>
+              <Badge variant="default" className="ml-2 bg-green-500 hover:bg-green-600">API</Badge>
             </div>
           </CollapsibleTrigger>
         </div>
@@ -260,7 +260,12 @@ const ApiSection: React.FC = () => {
                 This API is available for public use. Feel free to integrate it into your applications.
               </p>
               <p className="text-sm text-blue-700 dark:text-blue-400 mt-2">
-                <strong>Note:</strong> The API is live at <code className="bg-blue-100 dark:bg-blue-800 px-1.5 py-0.5 rounded">https://passgenfly.netlify.app/api/generate</code>
+                <strong>Live API:</strong> <code className="bg-blue-100 dark:bg-blue-800 px-1.5 py-0.5 rounded">https://passgenfly.netlify.app/api/generate</code>
+              </p>
+              <p className="text-sm text-blue-700 dark:text-blue-400 mt-1">
+                <strong>Local Development:</strong> <code className="bg-blue-100 dark:bg-blue-800 px-1.5 py-0.5 rounded">http://localhost:4174/api/generate</code> (API server)
+                <br />
+                <code className="bg-blue-100 dark:bg-blue-800 px-1.5 py-0.5 rounded mt-1 inline-block">http://localhost:4176</code> (Development server)
               </p>
             </div>
           </div>
