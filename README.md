@@ -4,7 +4,7 @@
 
 A sleek, modern password generator with customizable options and public API
 
-Live site: [passgenfly.netlify.app](https://passgenfly.netlify.app)
+Live site: [passgen.sanam.me](https://passgen.sanam.me)
 
 ## Features
 
