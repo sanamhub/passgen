@@ -108,10 +108,10 @@ To run the application locally:
 
 ```sh
 # Clone the repository
-git clone https://github.com/sanamhub/password-generator.git
+git clone https://github.com/sanamhub/passgen.git
 
 # Navigate to the project directory
-cd password-generator
+cd passgen
 
 # Install dependencies
 npm install
@@ -122,9 +122,6 @@ npm run dev
 # Start the API server
 npm run api
 ```
-
-The application will be available at <http://localhost:4176> (or another port if 4176 is in use).
-The API will be available at <http://localhost:4174/api/generate>.
 
 ## Tech Stack
 
