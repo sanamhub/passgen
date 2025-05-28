@@ -41,7 +41,7 @@ const Index = () => {
           <div className="flex items-center">
             <h1 className="flex items-center text-xl md:text-2xl font-bold">
               <span className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                PassGenFly
+                PassGen
               </span>
               <span className="hidden sm:block ml-2 text-muted-foreground text-sm font-normal border-l border-border pl-2">
                 Secure Password Generator
