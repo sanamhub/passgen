@@ -23,7 +23,7 @@ Live site: [passgen.sanam.me](https://passgen.sanam.me)
 PassGenFly provides a public API that can be used to generate passwords programmatically:
 
 ```
-GET https://passgenfly.netlify.app/api/generate
+https://passgenfly.netlify.app/api/generate
 ```
 
 ### Query Parameters
